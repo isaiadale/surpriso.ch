@@ -5,7 +5,6 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { useState } from "react";
 
-// Import fallback images
 import sweetFunImage from "@/assets/sweet-fun-box.jpg";
 import italianImage from "@/assets/italian-box.jpg";
 
@@ -22,7 +21,6 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const variant = node.variants.edges[0]?.node;
   const shopifyImage = node.images.edges[0]?.node?.url;
   
-  // Use fallback images if no Shopify image
   const getFallbackImage = () => {
     if (node.title.toLowerCase().includes("sweet") || node.title.toLowerCase().includes("fun")) {
       return sweetFunImage;
@@ -49,7 +47,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
     addItem(cartItem);
     setIsAdded(true);
-    toast.success(`${node.title} wurde zum Warenkorb hinzugefügt`, {
+    toast.success(`${node.title} hinzugefügt`, {
       position: "top-center",
     });
 
@@ -57,8 +55,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="group bg-card border-2 border-border overflow-hidden card-hover">
-      {/* Image */}
+    <div className="group bg-card border border-border rounded-lg overflow-hidden card-hover">
       <div className="aspect-square overflow-hidden bg-muted">
         <img
           src={image}
@@ -67,35 +64,34 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         />
       </div>
       
-      {/* Content */}
-      <div className="p-6">
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <h3 className="font-display text-2xl md:text-3xl leading-tight uppercase">
+      <div className="p-4">
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="font-display text-lg leading-tight uppercase">
             {node.title}
           </h3>
-          <span className="font-display text-3xl text-primary whitespace-nowrap">
+          <span className="font-display text-xl text-primary whitespace-nowrap">
             {price.currencyCode} {parseFloat(price.amount).toFixed(0)}
           </span>
         </div>
         
-        <p className="text-muted-foreground mb-6 line-clamp-3 leading-relaxed">
+        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
           {node.description}
         </p>
         
         <Button 
           onClick={handleAddToCart} 
           variant={isAdded ? "secondary" : "default"}
-          size="lg"
-          className="w-full"
+          size="sm"
+          className="w-full uppercase text-xs font-bold tracking-wider"
         >
           {isAdded ? (
             <>
-              <Check className="h-5 w-5 mr-2" />
+              <Check className="h-4 w-4 mr-1" />
               HINZUGEFÜGT
             </>
           ) : (
             <>
-              <Plus className="h-5 w-5 mr-2" />
+              <Plus className="h-4 w-4 mr-1" />
               IN DEN WARENKORB
             </>
           )}
