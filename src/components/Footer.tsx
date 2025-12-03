@@ -1,4 +1,4 @@
-import { Gift } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -7,12 +7,9 @@ export const Footer = () => {
     <footer className="bg-foreground text-background py-12">
       <div className="container-wide mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <Gift className="h-6 w-6 text-gold" />
-            <span className="font-display text-xl font-semibold">
-              Surprise<span className="text-gold">box</span>
-            </span>
-          </div>
+          <a href="/" className="flex items-center">
+            <img src={logo} alt="Surpriso" className="h-10 w-auto brightness-0 invert" />
+          </a>
 
           <nav className="flex flex-wrap justify-center gap-6 text-sm">
             <a href="#produkte" className="text-background/70 hover:text-background transition-colors">
