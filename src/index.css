@@ -149,26 +149,50 @@
   }
 
   .card-hover {
-    @apply transition-all duration-300 ease-out hover:-translate-y-1;
+    @apply transition-all duration-300 ease-out;
     box-shadow: var(--shadow-card);
   }
 
   .card-hover:hover {
     box-shadow: var(--shadow-elevated);
+    transform: translateY(-4px);
+  }
+
+  /* Card with scale effect */
+  .card-interactive {
+    @apply transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px) scale(1.02);
   }
 }
 
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
   }
 
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
   }
 
   .animate-scale-in {
     animation: scaleIn 0.4s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  .animate-wobble {
+    animation: wobble 0.6s ease-in-out;
   }
 
   @keyframes fadeIn {
@@ -183,7 +207,18 @@
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
     }
     to {
       opacity: 1;
@@ -202,9 +237,66 @@
     }
   }
 
+  @keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(-12deg); }
+    30% { transform: rotate(10deg); }
+    45% { transform: rotate(-8deg); }
+    60% { transform: rotate(6deg); }
+    75% { transform: rotate(-4deg); }
+    90% { transform: rotate(2deg); }
+  }
+
+  .delay-0 { animation-delay: 0ms; }
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  /* Gradient sweep on hover */
+  .btn-gradient-sweep {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .btn-gradient-sweep::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(24, 100%, 50%), hsl(328, 85%, 52%), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+  }
+
+  .btn-gradient-sweep:hover::before {
+    left: 100%;
+  }
+
+  /* Subtle float animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Pulse glow effect */
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 5px hsl(328, 85%, 52%, 0.3); }
+    50% { box-shadow: 0 0 20px hsl(328, 85%, 52%, 0.6), 0 0 30px hsl(24, 100%, 50%, 0.3); }
+  }
 }

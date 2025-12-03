@@ -46,13 +46,13 @@ export const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-card p-6 rounded-xl border border-border text-center card-hover"
+              className="bg-card p-6 rounded-xl border border-border text-center card-interactive group animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
-                <benefit.icon className="h-6 w-6 text-primary" />
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 transition-all duration-300 group-hover:bg-primary group-hover:scale-110">
+                <benefit.icon className="h-6 w-6 text-primary transition-colors group-hover:text-primary-foreground" />
               </div>
-              <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2 transition-colors group-hover:text-primary">
                 {benefit.title}
               </h3>
               <p className="text-muted-foreground text-sm">
@@ -73,11 +73,11 @@ export const BenefitsSection = () => {
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-12">
             {services.map((service, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
-                  <service.icon className="h-5 w-5 text-accent" />
+              <div key={index} className="flex items-center gap-3 group cursor-default">
+                <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-accent group-hover:scale-110">
+                  <service.icon className="h-5 w-5 text-accent transition-colors group-hover:text-white" />
                 </div>
-                <span className="font-medium text-foreground">{service.text}</span>
+                <span className="font-medium text-foreground transition-colors group-hover:text-accent">{service.text}</span>
               </div>
             ))}
           </div>

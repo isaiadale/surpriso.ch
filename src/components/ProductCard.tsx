@@ -62,12 +62,12 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <img
           src={image}
           alt={node.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
       
       <div className="p-6">
-        <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+        <h3 className="font-display text-xl font-semibold text-foreground mb-2 transition-colors group-hover:text-primary">
           {node.title}
         </h3>
         
