@@ -44,36 +44,39 @@ export const CartDrawer = () => {
         <Button variant="outline" size="icon" className="relative">
           <ShoppingCart className="h-5 w-5" />
           {totalItems > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs bg-primary text-primary-foreground">
+            <span className="absolute -top-2 -right-2 h-6 w-6 bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
               {totalItems}
-            </Badge>
+            </span>
           )}
         </Button>
       </SheetTrigger>
       
-      <SheetContent className="w-full sm:max-w-lg flex flex-col h-full">
-        <SheetHeader className="flex-shrink-0">
-          <SheetTitle className="font-display text-xl">Warenkorb</SheetTitle>
-          <SheetDescription>
-            {totalItems === 0 ? "Dein Warenkorb ist leer" : `${totalItems} Artikel im Warenkorb`}
-          </SheetDescription>
+      <SheetContent className="w-full sm:max-w-lg flex flex-col h-full bg-background border-l-2 border-border p-0">
+        <SheetHeader className="p-6 border-b-2 border-border flex-shrink-0">
+          <SheetTitle className="font-display text-2xl flex items-center gap-2">
+            <ShoppingCart className="h-6 w-6" />
+            WARENKORB ({totalItems})
+          </SheetTitle>
         </SheetHeader>
         
-        <div className="flex flex-col flex-1 pt-6 min-h-0">
+        <div className="flex flex-col flex-1 min-h-0">
           {items.length === 0 ? (
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex-1 flex items-center justify-center p-8">
               <div className="text-center">
-                <ShoppingCart className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground">Dein Warenkorb ist leer</p>
+                <div className="w-20 h-20 bg-muted flex items-center justify-center mx-auto mb-6">
+                  <ShoppingCart className="h-10 w-10 text-muted-foreground" />
+                </div>
+                <h3 className="font-display text-2xl mb-2">LEER</h3>
+                <p className="text-muted-foreground">Ihr Warenkorb ist noch leer.</p>
               </div>
             </div>
           ) : (
             <>
-              <div className="flex-1 overflow-y-auto pr-2 min-h-0">
+              <div className="flex-1 overflow-y-auto p-6 min-h-0">
                 <div className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.variantId} className="flex gap-4 p-3 bg-card rounded-lg border border-border">
-                      <div className="w-16 h-16 bg-secondary rounded-md overflow-hidden flex-shrink-0">
+                    <div key={item.variantId} className="flex gap-4 p-4 border-2 border-border">
+                      <div className="w-20 h-20 bg-muted overflow-hidden flex-shrink-0">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
@@ -84,39 +87,36 @@ export const CartDrawer = () => {
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-medium truncate">{item.product.node.title}</h4>
-                        <p className="font-semibold text-primary">
+                        <h4 className="font-display text-lg truncate uppercase">{item.product.node.title}</h4>
+                        <p className="font-bold text-primary">
                           {item.price.currencyCode} {parseFloat(item.price.amount).toFixed(2)}
                         </p>
-                      </div>
-                      
-                      <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-6 w-6"
-                          onClick={() => removeItem(item.variantId)}
-                        >
-                          <Trash2 className="h-3 w-3" />
-                        </Button>
                         
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-2 mt-3">
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-6 w-6"
+                            className="h-8 w-8"
                             onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
                           >
                             <Minus className="h-3 w-3" />
                           </Button>
-                          <span className="w-8 text-center text-sm">{item.quantity}</span>
+                          <span className="w-8 text-center font-bold">{item.quantity}</span>
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-6 w-6"
+                            className="h-8 w-8"
                             onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
                           >
                             <Plus className="h-3 w-3" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 ml-auto text-destructive"
+                            onClick={() => removeItem(item.variantId)}
+                          >
+                            <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
@@ -125,10 +125,10 @@ export const CartDrawer = () => {
                 </div>
               </div>
               
-              <div className="flex-shrink-0 space-y-4 pt-4 border-t border-border bg-background">
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-semibold">Total</span>
-                  <span className="text-xl font-bold font-display">
+              <div className="flex-shrink-0 p-6 border-t-2 border-border bg-muted">
+                <div className="flex justify-between items-center mb-6">
+                  <span className="font-display text-xl">TOTAL</span>
+                  <span className="font-display text-3xl text-primary">
                     {items[0]?.price.currencyCode || 'CHF'} {totalPrice.toFixed(2)}
                   </span>
                 </div>
@@ -136,22 +136,25 @@ export const CartDrawer = () => {
                 <Button 
                   onClick={handleCheckout}
                   className="w-full" 
-                  size="lg"
-                  variant="hero"
+                  size="xl"
+                  variant="default"
                   disabled={items.length === 0 || isLoading}
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Checkout wird erstellt...
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      WIRD GELADEN...
                     </>
                   ) : (
                     <>
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Zur Kasse
+                      <ExternalLink className="w-5 h-5 mr-2" />
+                      ZUR KASSE
                     </>
                   )}
                 </Button>
+                <p className="text-center text-sm text-muted-foreground mt-4">
+                  Sichere Zahlung via Shopify
+                </p>
               </div>
             </>
           )}

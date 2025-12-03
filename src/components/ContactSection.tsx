@@ -2,54 +2,62 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export const ContactSection = () => {
   return (
-    <section id="kontakt" className="section-padding bg-secondary/50">
-      <div className="container-narrow mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Kontakt
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Haben Sie Fragen oder möchten Sie eine Beratung? Wir sind für Sie da.
-          </p>
-        </div>
+    <section id="kontakt" className="section-padding bg-secondary text-secondary-foreground">
+      <div className="container-wide mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Contact Info */}
+          <div>
+            <h2 className="section-title mb-8">
+              LET'S
+              <br />
+              <span className="text-primary">TALK</span>
+            </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <a
-            href="mailto:hello@surprisebox.ch"
-            className="bg-card p-6 rounded-xl border border-border text-center card-hover group"
-          >
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
-              <Mail className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="font-semibold text-foreground mb-1">E-Mail</h3>
-            <p className="text-muted-foreground text-sm">hello@surprisebox.ch</p>
-          </a>
-
-          <a
-            href="tel:+41XXXXXXXXX"
-            className="bg-card p-6 rounded-xl border border-border text-center card-hover group"
-          >
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
-              <Phone className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="font-semibold text-foreground mb-1">Telefon</h3>
-            <p className="text-muted-foreground text-sm">+41 XX XXX XX XX</p>
-          </a>
-
-          <div className="bg-card p-6 rounded-xl border border-border text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
-              <MapPin className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="font-semibold text-foreground mb-1">Standort</h3>
-            <p className="text-muted-foreground text-sm">Schweiz</p>
+            <p className="text-xl text-secondary-foreground/80 mb-12 leading-relaxed">
+              Haben Sie Fragen oder möchten Sie eine individuelle Box zusammenstellen? 
+              Wir freuen uns auf Ihre Nachricht!
+            </p>
           </div>
 
-          <div className="bg-card p-6 rounded-xl border border-border text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
-              <Clock className="h-6 w-6 text-primary" />
+          {/* Right Column - Contact Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a
+              href="mailto:hello@surprisebox.ch"
+              className="group p-6 border-2 border-secondary-foreground/20 hover:border-primary transition-colors"
+            >
+              <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Mail className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <div className="text-sm font-bold uppercase tracking-wide text-secondary-foreground/60 mb-1">E-Mail</div>
+              <div className="font-display text-xl">HELLO@SURPRISEBOX.CH</div>
+            </a>
+
+            <a
+              href="tel:+41XXXXXXXXX"
+              className="group p-6 border-2 border-secondary-foreground/20 hover:border-primary transition-colors"
+            >
+              <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Phone className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <div className="text-sm font-bold uppercase tracking-wide text-secondary-foreground/60 mb-1">Telefon</div>
+              <div className="font-display text-xl">+41 XX XXX XX XX</div>
+            </a>
+
+            <div className="p-6 border-2 border-secondary-foreground/20">
+              <div className="w-12 h-12 bg-secondary-foreground/20 flex items-center justify-center mb-4">
+                <MapPin className="h-6 w-6 text-secondary-foreground" />
+              </div>
+              <div className="text-sm font-bold uppercase tracking-wide text-secondary-foreground/60 mb-1">Standort</div>
+              <div className="font-display text-xl">ZÜRICH, SCHWEIZ</div>
             </div>
-            <h3 className="font-semibold text-foreground mb-1">Antwortzeit</h3>
-            <p className="text-muted-foreground text-sm">Innerhalb 24h</p>
+
+            <div className="p-6 border-2 border-secondary-foreground/20">
+              <div className="w-12 h-12 bg-secondary-foreground/20 flex items-center justify-center mb-4">
+                <Clock className="h-6 w-6 text-secondary-foreground" />
+              </div>
+              <div className="text-sm font-bold uppercase tracking-wide text-secondary-foreground/60 mb-1">Antwortzeit</div>
+              <div className="font-display text-xl">INNERHALB 24H</div>
+            </div>
           </div>
         </div>
       </div>

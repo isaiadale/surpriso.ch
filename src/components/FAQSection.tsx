@@ -7,32 +7,32 @@ import {
 
 const faqs = [
   {
-    question: "Wie schnell kann ich meine Surprisebox erhalten?",
+    question: "WIE SCHNELL KANN GELIEFERT WERDEN?",
     answer:
       "Standard-Surpriseboxen versenden wir in der Regel innerhalb von 2-3 Werktagen. Bei grösseren Bestellungen oder individuellen Boxen kontaktieren Sie uns für eine genaue Zeitangabe.",
   },
   {
-    question: "Kann ich den Inhalt der Surprisebox selbst bestimmen?",
+    question: "KANN ICH DEN INHALT SELBST BESTIMMEN?",
     answer:
       "Bei unseren Standard-Surpriseboxen ist der Inhalt eine Überraschung. Für individuelle Zusammenstellungen ab 25 Stück können Sie Ihre Wünsche angeben – wir erstellen dann eine massgeschneiderte Offerte.",
   },
   {
-    question: "Wohin wird geliefert?",
+    question: "WOHIN WIRD GELIEFERT?",
     answer:
       "Wir liefern in die gesamte Schweiz. Bei individuellen Bestellungen können wir auch direkt an verschiedene Adressen Ihrer Kund:innen oder Mitarbeitenden versenden.",
   },
   {
-    question: "Kann ich eigene Produkte in die Box integrieren?",
+    question: "KANN ICH EIGENE PRODUKTE IN DIE BOX INTEGRIEREN?",
     answer:
       "Ja! Bei individuellen Surpriseboxen ab 25 Stück können Sie eigene Produkte, Flyer oder gebrandete Artikel hinzufügen. Ideal für Probier-Pakete oder Marketing-Aktionen.",
   },
   {
-    question: "Was ist die Mindestbestellmenge für individuelle Boxen?",
+    question: "WAS IST DIE MINDESTBESTELLMENGE?",
     answer:
       "Für individuelle Zusammenstellungen gilt eine Mindestbestellmenge von 25 Stück. Die Standard-Surpriseboxen können einzeln bestellt werden.",
   },
   {
-    question: "Wie funktioniert die Zahlung?",
+    question: "WIE FUNKTIONIERT DIE ZAHLUNG?",
     answer:
       "Für Einzelbestellungen bieten wir sichere Online-Zahlung via Shopify Checkout. Bei grösseren Bestellungen erstellen wir eine Rechnung mit 30 Tagen Zahlungsziel.",
   },
@@ -41,32 +41,37 @@ const faqs = [
 export const FAQSection = () => {
   return (
     <section id="faq" className="section-padding bg-background">
-      <div className="container-narrow mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Häufige Fragen
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Haben Sie weitere Fragen? Kontaktieren Sie uns gerne direkt.
-          </p>
-        </div>
+      <div className="container-wide mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Left Column - Title */}
+          <div>
+            <h2 className="section-title text-foreground mb-4 lg:sticky lg:top-32">
+              HÄUFIGE
+              <br />
+              <span className="text-primary">FRAGEN</span>
+            </h2>
+          </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="bg-card rounded-lg border border-border px-6 data-[state=open]:shadow-soft"
-            >
-              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary hover:no-underline py-5">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+          {/* Right Column - Accordion */}
+          <div>
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="border-2 border-border bg-card px-6"
+                >
+                  <AccordionTrigger className="font-display text-xl md:text-2xl text-left py-6 hover:text-primary hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-lg pb-6 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
       </div>
     </section>
   );

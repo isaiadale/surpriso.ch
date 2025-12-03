@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { FileText, Building2 } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import customBoxImage from "@/assets/custom-box.jpg";
 
 export const CustomBoxCard = () => {
@@ -11,41 +11,48 @@ export const CustomBoxCard = () => {
   };
 
   return (
-    <div className="group bg-card rounded-xl overflow-hidden border-2 border-primary/20 card-hover relative">
-      {/* Badge */}
-      <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2">
-        <Building2 className="h-3 w-3" />
-        Für Firmen
-      </div>
-
-      <div className="aspect-square overflow-hidden bg-secondary">
+    <div className="group bg-secondary text-secondary-foreground overflow-hidden card-hover">
+      {/* Image */}
+      <div className="relative aspect-square overflow-hidden">
         <img
           src={customBoxImage}
           alt="Individuelle Surprisebox"
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-60"
         />
-      </div>
-      
-      <div className="p-6">
-        <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-          Individuelle Surprisebox
-        </h3>
+        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/60 to-transparent" />
         
-        <p className="text-muted-foreground text-sm mb-4">
-          Ab 25 Stück für Firmen und Events. Wir erstellen kostenlos eine massgeschneiderte Offerte nach Ihren Wünschen.
-        </p>
-        
-        <div className="flex items-center justify-between">
-          <div className="font-display">
-            <span className="text-lg text-muted-foreground">ab </span>
-            <span className="text-2xl font-bold text-primary">CHF 35</span>
+        {/* Overlay Content */}
+        <div className="absolute inset-0 flex flex-col justify-end p-6">
+          <div className="inline-flex items-center gap-2 text-primary text-sm font-bold mb-2 uppercase tracking-wider">
+            <Sparkles className="h-4 w-4" />
+            AB 25 STÜCK
           </div>
-          
-          <Button onClick={scrollToForm} variant="gold">
-            <FileText className="h-4 w-4 mr-2" />
-            Offerte anfordern
-          </Button>
+          <h3 className="font-display text-3xl md:text-4xl leading-tight uppercase">
+            INDIVIDUELLE SURPRISEBOX
+          </h3>
         </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <div className="flex items-baseline gap-2 mb-4">
+          <span className="font-display text-3xl text-primary">AB CHF 35</span>
+          <span className="text-secondary-foreground/60">/ Stück</span>
+        </div>
+
+        <p className="text-secondary-foreground/80 mb-6 leading-relaxed">
+          Massgeschneidert für Ihr Unternehmen. Sie bestimmen Inhalt, Branding und Budget – wir kümmern uns um den Rest.
+        </p>
+
+        <Button 
+          variant="default" 
+          size="lg" 
+          className="w-full"
+          onClick={scrollToForm}
+        >
+          OFFERTE ANFORDERN
+          <ArrowRight className="h-5 w-5 ml-2" />
+        </Button>
       </div>
     </div>
   );
