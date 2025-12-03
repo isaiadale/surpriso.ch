@@ -7,14 +7,14 @@ import {
 
 const faqs = [
   {
-    question: "Wie schnell kann ich meine Surprisebox erhalten?",
+    question: "Wie schnell kann ich meine Surpriso-Box erhalten?",
     answer:
-      "Standard-Surpriseboxen versenden wir in der Regel innerhalb von 2-3 Werktagen. Bei grösseren Bestellungen oder individuellen Boxen kontaktieren Sie uns für eine genaue Zeitangabe.",
+      "Standard-Surpriso-Boxen versenden wir in der Regel innerhalb von 2-3 Werktagen. Bei grösseren Bestellungen oder individuellen Boxen kontaktieren Sie uns für eine genaue Zeitangabe.",
   },
   {
-    question: "Kann ich den Inhalt der Surprisebox selbst bestimmen?",
+    question: "Kann ich den Inhalt der Surpriso-Box selbst bestimmen?",
     answer:
-      "Bei unseren Standard-Surpriseboxen ist der Inhalt eine Überraschung. Für individuelle Zusammenstellungen ab 25 Stück können Sie Ihre Wünsche angeben – wir erstellen dann eine massgeschneiderte Offerte.",
+      "Bei unseren Standard-Surpriso-Boxen ist der Inhalt eine Überraschung. Für individuelle Zusammenstellungen ab 25 Stück können Sie Ihre Wünsche angeben – wir erstellen dann eine massgeschneiderte Offerte.",
   },
   {
     question: "Wohin wird geliefert?",
@@ -24,12 +24,12 @@ const faqs = [
   {
     question: "Kann ich eigene Produkte in die Box integrieren?",
     answer:
-      "Ja! Bei individuellen Surpriseboxen ab 25 Stück können Sie eigene Produkte, Flyer oder gebrandete Artikel hinzufügen. Ideal für Probier-Pakete oder Marketing-Aktionen.",
+      "Ja! Bei individuellen Surpriso-Boxen ab 25 Stück können Sie eigene Produkte, Flyer oder gebrandete Artikel hinzufügen. Ideal für Probier-Pakete oder Marketing-Aktionen.",
   },
   {
     question: "Was ist die Mindestbestellmenge für individuelle Boxen?",
     answer:
-      "Für individuelle Zusammenstellungen gilt eine Mindestbestellmenge von 25 Stück. Die Standard-Surpriseboxen können einzeln bestellt werden.",
+      "Für individuelle Zusammenstellungen gilt eine Mindestbestellmenge von 25 Stück. Die Standard-Surpriso-Boxen können einzeln bestellt werden.",
   },
   {
     question: "Wie funktioniert die Zahlung?",

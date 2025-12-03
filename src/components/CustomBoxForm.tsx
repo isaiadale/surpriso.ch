@@ -72,7 +72,7 @@ export const CustomBoxForm = () => {
             <span className="text-sm font-medium text-primary">Für Firmen & Events</span>
           </div>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Individuelle Surprisebox
+            Individuelle Surpriso-Box
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Ab 25 Stück erhältlich. Wir erstellen kostenlos eine massgeschneiderte Offerte nach Ihren Wünschen.

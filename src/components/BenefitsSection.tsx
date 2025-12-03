@@ -35,7 +35,7 @@ export const BenefitsSection = () => {
       <div className="container-wide mx-auto">
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Mit Surpriseboxen...
+            Mit Surpriso-Boxen...
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Schenken Sie Freude und Überraschung – für jeden Anlass und jede Beziehung.

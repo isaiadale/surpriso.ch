@@ -28,7 +28,7 @@ export const CustomBoxCard = () => {
       
       <div className="p-6">
         <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-          Individuelle Surprisebox
+          Individuelle Surpriso-Box
         </h3>
         
         <p className="text-muted-foreground text-sm mb-4">

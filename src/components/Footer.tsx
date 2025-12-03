@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.png";
+import logoType from "@/assets/logo-type.png";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className="container-wide mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <a href="/" className="flex items-center">
-            <img src={logo} alt="Surpriso" className="h-10 w-auto brightness-0 invert" />
+            <img src={logoType} alt="Surpriso" className="h-8 w-auto brightness-0 invert" />
           </a>
 
           <nav className="flex flex-wrap justify-center gap-6 text-sm">
@@ -30,7 +30,7 @@ export const Footer = () => {
           </nav>
 
           <p className="text-background/50 text-sm">
-            © {currentYear} Surprisebox. Alle Rechte vorbehalten.
+            © {currentYear} Surpriso. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>
