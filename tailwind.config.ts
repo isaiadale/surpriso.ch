@@ -57,7 +57,7 @@ export default {
         },
         cream: "hsl(var(--cream))",
         kraft: "hsl(var(--kraft))",
-        forest: "hsl(var(--forest))",
+        pink: "hsl(var(--pink))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

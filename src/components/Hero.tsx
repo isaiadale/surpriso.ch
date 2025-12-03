@@ -20,8 +20,8 @@ export const Hero = () => {
     <section className="relative min-h-screen flex items-center pt-20 bg-gradient-to-br from-primary/10 via-background to-accent/10">
       {/* Decorative elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 container-wide mx-auto px-4 md:px-8 py-16 md:py-24">

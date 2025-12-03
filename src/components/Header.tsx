@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Menu, X, ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Menu, X } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { CartDrawer } from "@/components/CartDrawer";
+import logo from "@/assets/logo.png";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,10 +22,8 @@ export const Header = () => {
       <div className="container-wide mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <span className="font-display text-xl md:text-2xl font-semibold text-foreground">
-              Surprise<span className="text-primary">box</span>
-            </span>
+          <a href="/" className="flex items-center">
+            <img src={logo} alt="Surpriso" className="h-10 md:h-12 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
