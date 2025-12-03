@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Gift } from "lucide-react";
 import { Confetti } from "@/components/Confetti";
+import logoType from "@/assets/logo-type.png";
 
 export const Hero = () => {
   const [isWobbling, setIsWobbling] = useState(false);
@@ -40,12 +41,12 @@ export const Hero = () => {
             Überraschen Sie
             <br />
             mit{" "}
-            <span 
-              className={`font-script inline-block cursor-pointer transition-transform hover:scale-105 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent ${isWobbling ? 'animate-wobble' : ''}`}
+            <img 
+              src={logoType}
+              alt="Surpriso"
+              className={`inline-block h-10 md:h-14 lg:h-16 cursor-pointer transition-transform hover:scale-105 align-baseline ${isWobbling ? 'animate-wobble' : ''}`}
               onMouseEnter={handleSurprisoHover}
-            >
-              Surpriso
-            </span>{" "}
+            />{" "}
             Geschenkboxen.
           </h1>
 
