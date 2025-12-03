@@ -41,13 +41,13 @@ export const WhyUsSection = () => {
               {reasons.map((reason, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border"
+                  className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border transition-all duration-300 hover:border-primary/30 hover:shadow-soft group"
                 >
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <reason.icon className="h-5 w-5 text-primary" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:scale-110">
+                    <reason.icon className="h-5 w-5 text-primary transition-colors group-hover:text-primary-foreground" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">{reason.title}</h4>
+                    <h4 className="font-semibold text-foreground mb-1 transition-colors group-hover:text-primary">{reason.title}</h4>
                     <p className="text-muted-foreground text-sm">{reason.description}</p>
                   </div>
                 </div>
@@ -78,9 +78,9 @@ export const WhyUsSection = () => {
                   "Persönliche Karte inklusive",
                   "Schweizweiter Versand",
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                    <span className="text-foreground">{item}</span>
+                  <li key={index} className="flex items-center gap-3 group cursor-default">
+                    <Check className="h-5 w-5 text-accent flex-shrink-0 transition-transform group-hover:scale-125" />
+                    <span className="text-foreground transition-colors group-hover:text-primary">{item}</span>
                   </li>
                 ))}
               </ul>
