@@ -1,37 +1,91 @@
-import { Shield, Zap, Palette, Eye } from "lucide-react";
+import { Check, Shield, Clock, Palette, BadgeSwissFranc } from "lucide-react";
 
 const reasons = [
-  { icon: Shield, title: "SCHWEIZER ANBIETER", description: "Lokale Qualität, persönlicher Service." },
-  { icon: Zap, title: "SICHERE ABWICKLUNG", description: "Von der Bestellung bis zur Lieferung." },
-  { icon: Palette, title: "INDIVIDUELL", description: "Jede Box nach Ihren Wünschen kuratiert." },
-  { icon: Eye, title: "KEINE VERSTECKTEN KOSTEN", description: "Transparente Preise, faire Konditionen." },
+  {
+    icon: BadgeSwissFranc,
+    title: "Schweizer Anbieter",
+    description: "Lokale Qualität und persönlicher Service aus der Schweiz",
+  },
+  {
+    icon: Clock,
+    title: "Sichere Ausführung",
+    description: "Auch bei knappen Deadlines liefern wir zuverlässig",
+  },
+  {
+    icon: Palette,
+    title: "Individuelle Zusammenstellung",
+    description: "Nach Ihren Wünschen und Budget zusammengestellt",
+  },
+  {
+    icon: Shield,
+    title: "Keine versteckten Kosten",
+    description: "Keine Billig-Inhalte, transparente Preise",
+  },
 ];
 
 export const WhyUsSection = () => {
   return (
     <section id="warum-wir" className="section-padding bg-background">
       <div className="container-wide mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="section-title text-foreground mb-3">
-            WARUM <span className="text-primary text-glow">WIR</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {reasons.map((reason) => (
-            <div
-              key={reason.title}
-              className="group p-4 border border-border bg-card rounded-lg hover:border-primary transition-colors"
-            >
-              <div className="w-10 h-10 bg-primary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <reason.icon className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-sm mb-1">{reason.title}</h3>
-              <p className="text-muted-foreground text-xs">
-                {reason.description}
-              </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6">
+              Warum <span className="text-primary">Surprisebox</span>?
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Wir sind Ihr zuverlässiger Partner für hochwertige Geschenkboxen in der Schweiz. 
+              Qualität, Zuverlässigkeit und persönlicher Service stehen bei uns an erster Stelle.
+            </p>
+            
+            <div className="space-y-4">
+              {reasons.map((reason, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border"
+                >
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <reason.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">{reason.title}</h4>
+                    <p className="text-muted-foreground text-sm">{reason.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+                <Check className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium text-primary">Garantiert</span>
+              </div>
+              
+              <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
+                Qualität, die überzeugt
+              </h3>
+              
+              <p className="text-muted-foreground">
+                Jede Surprisebox wird mit Sorgfalt zusammengestellt. Wir verwenden nur 
+                hochwertige Produkte und achten auf eine ansprechende Präsentation.
+              </p>
+              
+              <ul className="space-y-3">
+                {[
+                  "Handverlesene Premium-Produkte",
+                  "Liebevolles Packaging",
+                  "Persönliche Karte inklusive",
+                  "Schweizweiter Versand",
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

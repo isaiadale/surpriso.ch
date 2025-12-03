@@ -2,48 +2,54 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export const ContactSection = () => {
   return (
-    <section id="kontakt" className="section-padding bg-card">
-      <div className="container-wide mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="section-title text-foreground mb-3">
-            LET'S <span className="text-primary text-glow">TALK</span>
+    <section id="kontakt" className="section-padding bg-secondary/50">
+      <div className="container-narrow mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
+            Kontakt
           </h2>
-          <p className="text-muted-foreground text-sm">
-            Fragen oder individuelle Box zusammenstellen? Wir freuen uns auf Sie!
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Haben Sie Fragen oder möchten Sie eine Beratung? Wir sind für Sie da.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <a href="mailto:hello@surprisebox.ch" className="group p-4 border border-border bg-background rounded-lg hover:border-primary transition-colors text-center">
-            <div className="w-10 h-10 bg-primary flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
-              <Mail className="h-5 w-5 text-primary-foreground" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a
+            href="mailto:hello@surprisebox.ch"
+            className="bg-card p-6 rounded-xl border border-border text-center card-hover group"
+          >
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
+              <Mail className="h-6 w-6 text-primary" />
             </div>
-            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">E-Mail</div>
-            <div className="font-display text-xs">HELLO@SURPRISEBOX.CH</div>
+            <h3 className="font-semibold text-foreground mb-1">E-Mail</h3>
+            <p className="text-muted-foreground text-sm">hello@surprisebox.ch</p>
           </a>
 
-          <a href="tel:+41XXXXXXXXX" className="group p-4 border border-border bg-background rounded-lg hover:border-primary transition-colors text-center">
-            <div className="w-10 h-10 bg-primary flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform">
-              <Phone className="h-5 w-5 text-primary-foreground" />
+          <a
+            href="tel:+41XXXXXXXXX"
+            className="bg-card p-6 rounded-xl border border-border text-center card-hover group"
+          >
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
+              <Phone className="h-6 w-6 text-primary" />
             </div>
-            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Telefon</div>
-            <div className="font-display text-xs">+41 XX XXX XX XX</div>
+            <h3 className="font-semibold text-foreground mb-1">Telefon</h3>
+            <p className="text-muted-foreground text-sm">+41 XX XXX XX XX</p>
           </a>
 
-          <div className="p-4 border border-border bg-background rounded-lg text-center">
-            <div className="w-10 h-10 bg-muted flex items-center justify-center mx-auto mb-2">
-              <MapPin className="h-5 w-5 text-muted-foreground" />
+          <div className="bg-card p-6 rounded-xl border border-border text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
+              <MapPin className="h-6 w-6 text-primary" />
             </div>
-            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Standort</div>
-            <div className="font-display text-xs">ZÜRICH, SCHWEIZ</div>
+            <h3 className="font-semibold text-foreground mb-1">Standort</h3>
+            <p className="text-muted-foreground text-sm">Schweiz</p>
           </div>
 
-          <div className="p-4 border border-border bg-background rounded-lg text-center">
-            <div className="w-10 h-10 bg-muted flex items-center justify-center mx-auto mb-2">
-              <Clock className="h-5 w-5 text-muted-foreground" />
+          <div className="bg-card p-6 rounded-xl border border-border text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
+              <Clock className="h-6 w-6 text-primary" />
             </div>
-            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Antwortzeit</div>
-            <div className="font-display text-xs">INNERHALB 24H</div>
+            <h3 className="font-semibold text-foreground mb-1">Antwortzeit</h3>
+            <p className="text-muted-foreground text-sm">Innerhalb 24h</p>
           </div>
         </div>
       </div>

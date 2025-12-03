@@ -28,23 +28,23 @@ export const ProductsSection = () => {
   return (
     <section id="produkte" className="section-padding bg-background">
       <div className="container-wide mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="section-title text-foreground mb-3">
-            UNSERE <span className="text-primary text-glow">BOXEN</span>
+        <div className="text-center mb-12">
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">
+            Unsere Surpriseboxen
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm">
-            Fertige Überraschungsboxen zum sofort Bestellen oder individuell nach Ihren Wünschen.
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Einfach bestellen, Spass haben. Jede Box enthält einen Sticker und eine Karte.
           </p>
         </div>
 
         {isLoading ? (
-          <div className="flex justify-center items-center py-16">
-            <Loader2 className="h-10 w-10 animate-spin text-primary" />
+          <div className="flex justify-center items-center py-20">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
           </div>
         ) : error ? (
-          <div className="text-center py-16 text-muted-foreground">{error}</div>
+          <div className="text-center py-20 text-muted-foreground">{error}</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
               <ProductCard key={product.node.id} product={product} />
             ))}
