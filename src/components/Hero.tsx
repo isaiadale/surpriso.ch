@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Gift } from "lucide-react";
 import { Confetti } from "@/components/Confetti";
-import logoType from "@/assets/logo-type.png";
+import logoHeadline from "@/assets/logo-headline.png";
 
 export const Hero = () => {
   const [isWobbling, setIsWobbling] = useState(false);
@@ -37,20 +37,20 @@ export const Hero = () => {
             <span className="text-sm font-medium text-primary">Surprise-Geschenkboxen</span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-4 animate-slide-down delay-100">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-none mb-2 animate-slide-down delay-100">
             Überraschen Sie mit
           </h1>
           
-          <div className="mb-4 animate-slide-down delay-150">
+          <div className="mb-2 animate-slide-down delay-150">
             <img 
-              src={logoType}
+              src={logoHeadline}
               alt="Surpriso"
               className={`inline-block h-24 md:h-32 lg:h-40 cursor-pointer transition-transform hover:scale-105 relative z-50 ${isWobbling ? 'animate-wobble' : ''}`}
               onMouseEnter={handleSurprisoHover}
             />
           </div>
           
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-slide-down delay-200">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-none mb-6 animate-slide-down delay-200">
             Geschenkboxen.
           </h1>
 
