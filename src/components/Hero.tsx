@@ -44,7 +44,7 @@ export const Hero = () => {
             <img 
               src={logoType}
               alt="Surpriso"
-              className={`inline-block h-12 md:h-16 lg:h-20 cursor-pointer transition-transform hover:scale-105 align-middle relative z-50 ${isWobbling ? 'animate-wobble' : ''}`}
+              className={`inline-block h-[72px] md:h-24 lg:h-[120px] cursor-pointer transition-transform hover:scale-105 align-middle relative z-50 -translate-y-5 ${isWobbling ? 'animate-wobble' : ''}`}
               onMouseEnter={handleSurprisoHover}
             />{" "}
             Geschenkboxen.
