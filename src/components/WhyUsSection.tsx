@@ -30,7 +30,7 @@ export const WhyUsSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6">
-              Warum <span className="text-primary">Surprisebox</span>?
+              Warum <span className="text-primary">Surpriso</span>?
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
               Wir sind Ihr zuverlässiger Partner für hochwertige Geschenkboxen in der Schweiz. 
@@ -67,7 +67,7 @@ export const WhyUsSection = () => {
               </h3>
               
               <p className="text-muted-foreground">
-                Jede Surprisebox wird mit Sorgfalt zusammengestellt. Wir verwenden nur 
+                Jede Surpriso-Box wird mit Sorgfalt zusammengestellt. Wir verwenden nur 
                 hochwertige Produkte und achten auf eine ansprechende Präsentation.
               </p>
               
