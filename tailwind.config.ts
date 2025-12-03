@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         display: ["Space Grotesk", "sans-serif"],
         body: ["Inter", "sans-serif"],
-        script: ["Satisfy", "cursive"],
+        script: ["Abril Fatface", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

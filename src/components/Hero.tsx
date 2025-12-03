@@ -41,7 +41,7 @@ export const Hero = () => {
             <br />
             mit{" "}
             <span 
-              className={`font-script text-5xl md:text-6xl lg:text-7xl inline-block cursor-pointer transition-transform hover:scale-105 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent ${isWobbling ? 'animate-wobble' : ''}`}
+              className={`font-script inline-block cursor-pointer transition-transform hover:scale-105 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent ${isWobbling ? 'animate-wobble' : ''}`}
               onMouseEnter={handleSurprisoHover}
             >
               Surpriso
