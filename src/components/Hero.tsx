@@ -37,7 +37,9 @@ export const Hero = () => {
           </div>
 
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-slide-down delay-100">
-            Überraschen Sie mit{" "}
+            Überraschen Sie
+            <br />
+            mit{" "}
             <span 
               className={`text-primary inline-block cursor-pointer transition-transform hover:scale-105 ${isWobbling ? 'animate-wobble' : ''}`}
               onMouseEnter={handleSurprisoHover}
@@ -46,6 +48,17 @@ export const Hero = () => {
             </span>{" "}
             Geschenkboxen.
           </h1>
+
+          {/* Christmas Badge */}
+          <div className="absolute top-24 right-4 md:top-32 md:right-20 animate-float">
+            <div className="bg-primary text-primary-foreground rounded-full w-24 h-24 md:w-28 md:h-28 flex items-center justify-center shadow-lg transform rotate-12 hover:rotate-0 transition-transform duration-300 cursor-default">
+              <div className="text-center leading-tight">
+                <span className="text-xs md:text-sm font-medium">Merry</span>
+                <br />
+                <span className="text-base md:text-lg font-display font-bold">Christmas</span>
+              </div>
+            </div>
+          </div>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed animate-slide-down delay-200">
             Suchen Sie ein passendes Dankeschön für Ihr Team oder ein Weihnachtsgeschenk für Ihre Kund:innen? 
