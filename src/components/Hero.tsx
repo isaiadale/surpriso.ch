@@ -1,23 +1,14 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Gift } from "lucide-react";
 import { Confetti } from "@/components/Confetti";
-import { ConfettiBurst } from "@/components/ConfettiBurst";
 import logoHeadline from "@/assets/logo-headline.png";
 
 export const Hero = () => {
-  const [showBurst, setShowBurst] = useState(false);
-
   const scrollToProducts = () => {
     const element = document.getElementById("produkte");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const handleLogoHover = () => {
-    setShowBurst(true);
-    setTimeout(() => setShowBurst(false), 100);
   };
 
   return (
@@ -40,13 +31,11 @@ export const Hero = () => {
             Überraschen Sie mit
           </h1>
           
-          <div className="mb-2 animate-slide-down delay-150 relative">
-            <ConfettiBurst isActive={showBurst} />
+          <div className="mb-2 animate-slide-down delay-150">
             <img 
               src={logoHeadline}
               alt="Surpriso"
               className="inline-block h-16 md:h-24 lg:h-28 cursor-pointer transition-transform hover:scale-105 relative z-50"
-              onMouseEnter={handleLogoHover}
             />
           </div>
           
