@@ -16,8 +16,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 330 25% 15%;
 
-    /* Warm orange primary (from logo) */
-    --primary: 24 100% 50%;
+    /* Pink/magenta primary (from logo) */
+    --primary: 328 85% 52%;
     --primary-foreground: 0 0% 100%;
 
     /* Light warm secondary */
@@ -28,8 +28,8 @@
     --muted: 30 20% 94%;
     --muted-foreground: 330 15% 45%;
 
-    /* Pink/magenta accent (from logo) */
-    --accent: 328 85% 52%;
+    /* Warm orange accent (from logo) */
+    --accent: 24 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -37,7 +37,7 @@
 
     --border: 220 15% 88%;
     --input: 220 15% 88%;
-    --ring: 24 100% 50%;
+    --ring: 328 85% 52%;
 
     --radius: 0.75rem;
 
@@ -82,7 +82,7 @@
     --popover: 330 20% 12%;
     --popover-foreground: 30 15% 95%;
 
-    --primary: 24 95% 55%;
+    --primary: 328 80% 55%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 330 15% 18%;
@@ -91,7 +91,7 @@
     --muted: 330 15% 20%;
     --muted-foreground: 30 15% 60%;
 
-    --accent: 328 80% 55%;
+    --accent: 24 95% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
@@ -99,7 +99,7 @@
 
     --border: 330 15% 22%;
     --input: 330 15% 22%;
-    --ring: 24 95% 55%;
+    --ring: 328 80% 55%;
 
     --sidebar-background: 220 25% 10%;
     --sidebar-foreground: 220 15% 95%;
