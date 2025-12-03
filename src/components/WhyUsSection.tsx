@@ -1,25 +1,25 @@
-import { Check, Shield, Clock, Palette, BadgeSwissFranc } from "lucide-react";
+import { Shield, Zap, Palette, Eye } from "lucide-react";
 
 const reasons = [
   {
-    icon: BadgeSwissFranc,
-    title: "Schweizer Anbieter",
-    description: "Lokale Qualität und persönlicher Service aus der Schweiz",
+    icon: Shield,
+    title: "SCHWEIZER ANBIETER",
+    description: "Lokale Qualität, persönlicher Service, kurze Wege.",
   },
   {
-    icon: Clock,
-    title: "Sichere Ausführung",
-    description: "Auch bei knappen Deadlines liefern wir zuverlässig",
+    icon: Zap,
+    title: "SICHERE ABWICKLUNG",
+    description: "Von der Bestellung bis zur Lieferung – alles reibungslos.",
   },
   {
     icon: Palette,
-    title: "Individuelle Zusammenstellung",
-    description: "Nach Ihren Wünschen und Budget zusammengestellt",
+    title: "INDIVIDUELLE ZUSAMMENSTELLUNG",
+    description: "Jede Box wird nach Ihren Wünschen kuratiert.",
   },
   {
-    icon: Shield,
-    title: "Keine versteckten Kosten",
-    description: "Keine Billig-Inhalte, transparente Preise",
+    icon: Eye,
+    title: "KEINE VERSTECKTEN KOSTEN",
+    description: "Transparente Preise, faire Konditionen, keine Überraschungen.",
   },
 ];
 
@@ -27,65 +27,35 @@ export const WhyUsSection = () => {
   return (
     <section id="warum-wir" className="section-padding bg-background">
       <div className="container-wide mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6">
-              Warum <span className="text-primary">Surprisebox</span>?
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Wir sind Ihr zuverlässiger Partner für hochwertige Geschenkboxen in der Schweiz. 
-              Qualität, Zuverlässigkeit und persönlicher Service stehen bei uns an erster Stelle.
-            </p>
-            
-            <div className="space-y-4">
-              {reasons.map((reason, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border"
-                >
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <reason.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">{reason.title}</h4>
-                    <p className="text-muted-foreground text-sm">{reason.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Section Header */}
+        <div className="mb-16">
+          <h2 className="section-title text-foreground mb-4">
+            WARUM <span className="text-primary">WIR</span>
+          </h2>
+        </div>
 
-          <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
-                <Check className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Garantiert</span>
+        {/* Reasons Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-2 border-border">
+          {reasons.map((reason, index) => (
+            <div
+              key={reason.title}
+              className={`group p-8 md:p-12 ${
+                index < 2 ? 'border-b-2' : ''
+              } ${index % 2 === 0 ? 'md:border-r-2' : ''} border-border hover:bg-muted transition-colors duration-300`}
+            >
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <reason.icon className="h-7 w-7 text-primary-foreground" />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl md:text-3xl mb-3">{reason.title}</h3>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    {reason.description}
+                  </p>
+                </div>
               </div>
-              
-              <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
-                Qualität, die überzeugt
-              </h3>
-              
-              <p className="text-muted-foreground">
-                Jede Surprisebox wird mit Sorgfalt zusammengestellt. Wir verwenden nur 
-                hochwertige Produkte und achten auf eine ansprechende Präsentation.
-              </p>
-              
-              <ul className="space-y-3">
-                {[
-                  "Handverlesene Premium-Produkte",
-                  "Liebevolles Packaging",
-                  "Persönliche Karte inklusive",
-                  "Schweizweiter Versand",
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <Check className="h-5 w-5 text-accent flex-shrink-0" />
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

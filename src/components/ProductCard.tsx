@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Check } from "lucide-react";
+import { ShoppingCart, Check, Plus } from "lucide-react";
 import { ShopifyProduct, CartItem } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
@@ -57,8 +57,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="group bg-card rounded-xl overflow-hidden border border-border card-hover">
-      <div className="aspect-square overflow-hidden bg-secondary">
+    <div className="group bg-card border-2 border-border overflow-hidden card-hover">
+      {/* Image */}
+      <div className="aspect-square overflow-hidden bg-muted">
         <img
           src={image}
           alt={node.title}
@@ -66,38 +67,39 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         />
       </div>
       
+      {/* Content */}
       <div className="p-6">
-        <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-          {node.title}
-        </h3>
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <h3 className="font-display text-2xl md:text-3xl leading-tight uppercase">
+            {node.title}
+          </h3>
+          <span className="font-display text-3xl text-primary whitespace-nowrap">
+            {price.currencyCode} {parseFloat(price.amount).toFixed(0)}
+          </span>
+        </div>
         
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+        <p className="text-muted-foreground mb-6 line-clamp-3 leading-relaxed">
           {node.description}
         </p>
         
-        <div className="flex items-center justify-between">
-          <div className="font-display text-2xl font-bold text-primary">
-            {price.currencyCode} {parseFloat(price.amount).toFixed(0)}
-          </div>
-          
-          <Button 
-            onClick={handleAddToCart} 
-            variant={isAdded ? "accent" : "default"}
-            className="transition-all"
-          >
-            {isAdded ? (
-              <>
-                <Check className="h-4 w-4 mr-2" />
-                Hinzugefügt
-              </>
-            ) : (
-              <>
-                <ShoppingCart className="h-4 w-4 mr-2" />
-                In den Warenkorb
-              </>
-            )}
-          </Button>
-        </div>
+        <Button 
+          onClick={handleAddToCart} 
+          variant={isAdded ? "secondary" : "default"}
+          size="lg"
+          className="w-full"
+        >
+          {isAdded ? (
+            <>
+              <Check className="h-5 w-5 mr-2" />
+              HINZUGEFÜGT
+            </>
+          ) : (
+            <>
+              <Plus className="h-5 w-5 mr-2" />
+              IN DEN WARENKORB
+            </>
+          )}
+        </Button>
       </div>
     </div>
   );
