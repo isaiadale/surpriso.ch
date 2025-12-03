@@ -31,42 +31,35 @@ export const Hero = () => {
       </div>
 
       <div className="relative z-10 container-wide mx-auto px-4 md:px-8 py-16 md:py-24">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6 animate-slide-down delay-0">
             <Gift className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary">Surprise-Geschenkboxen</span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-slide-down delay-100">
-            Überraschen Sie
-            <br />
-            mit{" "}
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-4 animate-slide-down delay-100">
+            Überraschen Sie mit
+          </h1>
+          
+          <div className="mb-4 animate-slide-down delay-150">
             <img 
               src={logoType}
               alt="Surpriso"
-              className={`inline-block h-[72px] md:h-24 lg:h-[120px] cursor-pointer transition-transform hover:scale-105 align-middle relative z-50 -translate-y-5 ${isWobbling ? 'animate-wobble' : ''}`}
+              className={`inline-block h-24 md:h-32 lg:h-40 cursor-pointer transition-transform hover:scale-105 relative z-50 ${isWobbling ? 'animate-wobble' : ''}`}
               onMouseEnter={handleSurprisoHover}
-            />{" "}
+            />
+          </div>
+          
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6 animate-slide-down delay-200">
             Geschenkboxen.
           </h1>
 
-          {/* Christmas Badge */}
-          <div className="absolute top-24 right-4 md:top-32 md:right-20 animate-float">
-            <div className="bg-primary text-primary-foreground rounded-full w-24 h-24 md:w-28 md:h-28 flex items-center justify-center shadow-lg transform rotate-12 hover:rotate-0 transition-transform duration-300 cursor-default">
-              <div className="text-center leading-tight">
-                <span className="text-xs md:text-sm font-medium">Merry</span>
-                <br />
-                <span className="text-base md:text-lg font-display font-bold">Christmas</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed animate-slide-down delay-200">
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed animate-slide-down delay-300 max-w-2xl mx-auto">
             Suchen Sie ein passendes Dankeschön für Ihr Team oder ein Weihnachtsgeschenk für Ihre Kund:innen? 
             Überraschen Sie mit unseren Surpriso-Boxen oder individuell zusammengestellten Geschenkboxen für jeden Anlass.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-slide-down delay-300">
+          <div className="flex justify-center gap-4 animate-slide-down delay-400">
             <Button 
               variant="hero" 
               size="xl" 
@@ -78,7 +71,7 @@ export const Hero = () => {
             </Button>
           </div>
 
-          <div className="mt-12 flex items-center gap-8 animate-slide-down delay-400">
+          <div className="mt-12 flex items-center justify-center gap-8 animate-slide-down delay-500">
             <div className="text-center group cursor-default">
               <div className="text-2xl font-display font-bold text-foreground transition-transform group-hover:scale-110">100%</div>
               <div className="text-sm text-muted-foreground">Swiss Made</div>
@@ -92,6 +85,17 @@ export const Hero = () => {
             <div className="text-center group cursor-default">
               <div className="text-2xl font-display font-bold text-foreground transition-transform group-hover:scale-110">25+</div>
               <div className="text-sm text-muted-foreground">Für Firmen</div>
+            </div>
+          </div>
+
+          {/* Christmas Badge - now at bottom */}
+          <div className="mt-8 flex justify-center animate-float animate-slide-down delay-600">
+            <div className="bg-primary text-primary-foreground rounded-full w-24 h-24 md:w-28 md:h-28 flex items-center justify-center shadow-lg transform rotate-12 hover:rotate-0 transition-transform duration-300 cursor-default">
+              <div className="text-center leading-tight">
+                <span className="text-xs md:text-sm font-medium">Merry</span>
+                <br />
+                <span className="text-base md:text-lg font-display font-bold">Christmas</span>
+              </div>
             </div>
           </div>
         </div>
