@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Gift } from "lucide-react";
 import { Confetti } from "@/components/Confetti";
-import logoHeadline from "@/assets/logo-headline.png";
 
 export const Hero = () => {
   const scrollToProducts = () => {
@@ -13,9 +12,11 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 bg-gradient-to-br from-primary/15 via-accent/10 to-primary/20">
-      {/* Confetti Animation */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* Confetti Animation - hidden on mobile */}
+      <div className="absolute inset-0 z-0 overflow-hidden hidden md:block">
         <Confetti />
+      </div>
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl" />
       </div>
@@ -31,20 +32,16 @@ export const Hero = () => {
             Überraschen Sie mit
           </h1>
           
-          <div className="mb-2 animate-slide-down delay-150">
-            <img 
-              src={logoHeadline}
-              alt="Surpriso"
-              className="inline-block h-16 md:h-24 lg:h-28 cursor-pointer transition-transform hover:scale-105 relative z-50"
-            />
-          </div>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold leading-none mb-2 animate-slide-down delay-150 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            Surpriso
+          </h1>
           
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-none mb-6 animate-slide-down delay-200">
             Geschenkboxen.
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed animate-slide-down delay-300 max-w-2xl mx-auto">
-            Suchen Sie ein passendes Dankeschön für Ihr Team oder ein Weihnachtsgeschenk für Ihre Kund:innen? 
+            Suchen Sie ein passendes Dankeschön für Ihr Team oder ein Geschenk für Ihre Kund:innen? 
             Überraschen Sie mit unseren Surpriso-Boxen oder individuell zusammengestellten Geschenkboxen für jeden Anlass.
           </p>
 
