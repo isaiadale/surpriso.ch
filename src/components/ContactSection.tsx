@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 
 export const ContactSection = () => {
   return (
@@ -13,7 +13,7 @@ export const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           <a
             href="mailto:hello@surprisebox.ch"
             className="bg-card p-6 rounded-xl border border-border text-center card-hover group"
@@ -23,17 +23,6 @@ export const ContactSection = () => {
             </div>
             <h3 className="font-semibold text-foreground mb-1">E-Mail</h3>
             <p className="text-muted-foreground text-sm">hello@surprisebox.ch</p>
-          </a>
-
-          <a
-            href="tel:+41XXXXXXXXX"
-            className="bg-card p-6 rounded-xl border border-border text-center card-hover group"
-          >
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
-              <Phone className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="font-semibold text-foreground mb-1">Telefon</h3>
-            <p className="text-muted-foreground text-sm">+41 XX XXX XX XX</p>
           </a>
 
           <div className="bg-card p-6 rounded-xl border border-border text-center">

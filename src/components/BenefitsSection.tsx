@@ -3,8 +3,8 @@ import { Gift, Heart, Package, Users, Sparkles, Truck } from "lucide-react";
 const benefits = [
   {
     icon: Heart,
-    title: "Weihnachtsgeschenke",
-    description: "Machen Sie Ihren Kund:innen ein spezielles Weihnachtsgeschenk",
+    title: "Geschenke",
+    description: "Machen Sie Ihren Kund:innen ein spezielles Geschenk",
   },
   {
     icon: Users,
