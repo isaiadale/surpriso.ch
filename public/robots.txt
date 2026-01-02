@@ -1,8 +1,13 @@
+# Surpriso-Box Robots.txt
+# https://surpriso-box.ch
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +15,20 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://surpriso-box.ch/sitemap.xml
+
+# Block common crawlers from development/admin paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
