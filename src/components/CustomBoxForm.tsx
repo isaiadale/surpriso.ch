@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Send, Building2, Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+
+const EDGE_FUNCTION_URL = "https://czsbffoumvwqhbdlrnws.supabase.co/functions/v1/send-quote-request";
 
 export const CustomBoxForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,12 +34,17 @@ export const CustomBoxForm = () => {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke("send-quote-request", {
-        body: formData,
+      const response = await fetch(EDGE_FUNCTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      if (error) {
-        throw error;
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to send request");
       }
 
       setIsSubmitted(true);
