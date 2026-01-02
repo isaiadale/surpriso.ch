@@ -6,9 +6,8 @@ import { toast } from "sonner";
 import { useState } from "react";
 
 // Import fallback images
-import sweetFunImage from "@/assets/sweet-fun-box.jpg";
-import italianImage from "@/assets/italian-box.jpg";
-import goodieFunImage from "@/assets/goodie-fun-box.jpg";
+import sweetFunImage from "@/assets/sweet-fun-box.png";
+import goodieFunImage from "@/assets/goodie-fun-box.png";
 
 interface ProductCardProps {
   product: ShopifyProduct;
@@ -26,14 +25,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   // Use fallback images if no Shopify image
   const getFallbackImage = () => {
     const title = node.title.toLowerCase();
-    if (title.includes("goodie") && title.includes("fun")) {
+    if (title.includes("goodie")) {
       return goodieFunImage;
-    }
-    if (title.includes("sweet") || title.includes("fun")) {
-      return sweetFunImage;
-    }
-    if (title.includes("italian")) {
-      return italianImage;
     }
     return sweetFunImage;
   };
