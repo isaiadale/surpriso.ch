@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Building2 } from "lucide-react";
-import customBoxImage from "@/assets/custom-box.jpg";
+import customBoxImage from "@/assets/custom-box.png";
 
 export const CustomBoxCard = () => {
   const scrollToForm = () => {
