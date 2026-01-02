@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Send, Building2, Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 export const CustomBoxForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,15 +32,29 @@ export const CustomBoxForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const { data, error } = await supabase.functions.invoke("send-quote-request", {
+        body: formData,
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast.success("Anfrage erfolgreich gesendet!", {
-      description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-      position: "top-center",
-    });
+      if (error) {
+        throw error;
+      }
+
+      setIsSubmitted(true);
+      toast.success("Anfrage erfolgreich gesendet!", {
+        description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+        position: "top-center",
+      });
+    } catch (error: any) {
+      console.error("Error sending quote request:", error);
+      toast.error("Fehler beim Senden", {
+        description: "Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.",
+        position: "top-center",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
