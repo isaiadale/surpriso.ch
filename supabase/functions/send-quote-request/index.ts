@@ -6,22 +6,11 @@ const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_MAX = 5; // Max requests per window
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
-// Allowed origins - restrict to your domain
-const ALLOWED_ORIGINS = [
-  "https://czsbffoumvwqhbdlrnws.lovable.app",
-  "https://surpriso-box.ch",
-  "https://www.surpriso-box.ch",
-  "http://localhost:5173", // For development
-  "http://localhost:8080",
-];
-
-const getCorsHeaders = (origin: string | null) => {
-  const allowedOrigin = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
-  return {
-    "Access-Control-Allow-Origin": allowedOrigin,
-    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-  };
+// CORS (public endpoint)
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
 // Input validation schema
@@ -80,9 +69,6 @@ const cleanupRateLimitMap = () => {
 };
 
 const handler = async (req: Request): Promise<Response> => {
-  const origin = req.headers.get("origin");
-  const corsHeaders = getCorsHeaders(origin);
-
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -201,7 +187,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Surpriso-Box <onboarding@resend.dev>",
+        from: "Surpriso-Box <info@surpriso.ch>",
         to: ["info@surpriso.ch"],
         subject: `Neue Offerteanfrage von ${safeData.company} - ${safeData.quantity} Pakete`,
         html: emailHtml,
@@ -227,7 +213,9 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in send-quote-request function:", error);
     return new Response(
-      JSON.stringify({ error: "An error occurred processing your request" }),
+      JSON.stringify({
+        error: error?.message ?? "An error occurred processing your request",
+      }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

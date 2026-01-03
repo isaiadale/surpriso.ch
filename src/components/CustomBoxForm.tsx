@@ -55,7 +55,7 @@ export const CustomBoxForm = () => {
     } catch (error: any) {
       console.error("Error sending quote request:", error);
       toast.error("Fehler beim Senden", {
-        description: "Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.",
+        description: error?.message || "Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.",
         position: "top-center",
       });
     } finally {
