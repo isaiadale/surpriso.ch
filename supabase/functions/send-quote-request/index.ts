@@ -202,7 +202,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Surpriso-Box <onboarding@resend.dev>",
-        to: ["nois.automate@gmail.com"],
+        to: ["info@surpriso.ch"],
         subject: `Neue Offerteanfrage von ${safeData.company} - ${safeData.quantity} Pakete`,
         html: emailHtml,
         reply_to: data.email, // Use original email for reply-to
