@@ -15,14 +15,14 @@ export const ContactSection = () => {
 
         <div className="grid md:grid-cols-3 gap-6">
           <a
-            href="mailto:hello@surprisebox.ch"
+            href="mailto:info@surpriso.ch"
             className="bg-card p-6 rounded-xl border border-border text-center card-hover group"
           >
             <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
               <Mail className="h-6 w-6 text-primary" />
             </div>
             <h3 className="font-semibold text-foreground mb-1">E-Mail</h3>
-            <p className="text-muted-foreground text-sm">hello@surprisebox.ch</p>
+            <p className="text-muted-foreground text-sm">info@surpriso.ch</p>
           </a>
 
           <div className="bg-card p-6 rounded-xl border border-border text-center">
