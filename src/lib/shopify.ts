@@ -1,9 +1,9 @@
 import { toast } from "sonner";
 
 const SHOPIFY_API_VERSION = '2025-07';
-const SHOPIFY_STORE_PERMANENT_DOMAIN = 'lovable-project-9gwnh.myshopify.com';
+const SHOPIFY_STORE_PERMANENT_DOMAIN = 'surpriso-ch.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-const SHOPIFY_STOREFRONT_TOKEN = '76424b94327c9c4308c95f4ec9dd4b7a';
+const SHOPIFY_STOREFRONT_TOKEN = 'f70b27355c8f64300bb38a6df0b40949';
 
 export interface ShopifyProduct {
   node: {
@@ -168,7 +168,7 @@ export async function storefrontApiRequest(query: string, variables: Record<stri
   }
 
   const data = await response.json();
-  
+
   if (data.errors) {
     throw new Error(`Error calling Shopify: ${data.errors.map((e: { message: string }) => e.message).join(', ')}`);
   }
@@ -215,7 +215,7 @@ export async function createStorefrontCheckout(items: CartItem[]): Promise<strin
   }
 
   const cart = cartData.data.cartCreate.cart;
-  
+
   if (!cart.checkoutUrl) {
     throw new Error('No checkout URL returned from Shopify');
   }
