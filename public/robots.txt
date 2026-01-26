@@ -1,34 +1,23 @@
-# Surpriso-Box Robots.txt
-# https://surpriso-box.ch
-
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: Pinterest
-Allow: /
-
 User-agent: *
 Allow: /
-Crawl-delay: 2
 
-# Sitemap location
-Sitemap: https://surpriso-box.ch/sitemap.xml
-
-# Block common crawlers from development/admin paths
-Disallow: /api/
-Disallow: /_next/
+# Blockiere sensible oder unwichtige Bereiche
+Disallow: /js/
+Disallow: /css/
+Disallow: /inc/
+Disallow: /vendor/
 Disallow: /admin/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /login/
+Disallow: /my-account/
+Disallow: /search/
+Disallow: /api/
+
+# Verhindere das Indexieren von URL-Parametern (vermeidet Duplicate Content)
+Disallow: /*?*
+Disallow: /*?orderby=
+Disallow: /*?filter_
+
+# Link zur Sitemap (Wichtig für Google)
+Sitemap: https://surpriso.ch/sitemap.xml
