@@ -5,11 +5,11 @@ export const CookieBanner = () => {
   const { acceptAll, rejectAll, openSettings } = useCookieConsentStore();
 
   return (
-    <div className="fixed bottom-4 right-4 left-4 md:left-auto md:max-w-md z-50 animate-fade-in-up">
+    <div className="fixed bottom-4 right-4 left-4 md:left-auto md:max-w-lg z-50 animate-fade-in-up">
       <div className="relative bg-background rounded-2xl shadow-elevated border border-border p-6">
-        <span className="absolute top-4 right-4 text-2xl" aria-hidden="true">🍪</span>
+        <span className="absolute top-1 right-1 text-5xl" aria-hidden="true">🍪</span>
 
-        <h2 className="font-display font-semibold text-[24px] md:text-[36px] text-[#000000] leading-tight pr-10">
+        <h2 className="font-display font-semibold text-[20px] text-[#000000] leading-tight pr-10">
           Cookies für das perfekte Geschenk?
         </h2>
 
