@@ -1,7 +1,9 @@
 import logoType from "@/assets/logo-type.png";
+import { useCookieConsentStore } from "@/stores/cookieConsentStore";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const openSettings = useCookieConsentStore((s) => s.openSettings);
 
   return (
     <footer className="bg-foreground text-background py-12">
@@ -27,6 +29,9 @@ export const Footer = () => {
             <a href="#kontakt" className="text-background/70 hover:text-background transition-colors">
               Kontakt
             </a>
+            <button onClick={openSettings} className="text-background/70 hover:text-background transition-colors">
+              Cookie-Einstellungen
+            </button>
           </nav>
 
           <p className="text-background/50 text-sm">
