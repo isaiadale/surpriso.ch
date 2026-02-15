@@ -9,7 +9,8 @@ export const ContactSection = () => {
             Kontakt
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Haben Sie Fragen oder möchten Sie eine Beratung? Wir sind für Sie da.
+            Haben Sie Fragen oder möchten Sie eine Beratung? Wir sind für Sie
+            da.
           </p>
         </div>
 
@@ -30,7 +31,7 @@ export const ContactSection = () => {
               <MapPin className="h-6 w-6 text-primary" />
             </div>
             <h3 className="font-semibold text-foreground mb-1">Standort</h3>
-            <p className="text-muted-foreground text-sm">Schweiz</p>
+            <p className="text-muted-foreground text-sm">St.Gallen, Schweiz</p>
           </div>
 
           <div className="bg-card p-6 rounded-xl border border-border text-center">
