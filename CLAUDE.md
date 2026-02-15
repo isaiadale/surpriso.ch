@@ -31,22 +31,30 @@ No test framework is configured.
 
 **Shopify Storefront API** (`/src/lib/shopify.ts`)
 - GraphQL API for fetching products and creating cart checkouts
-- Checkout redirects to Shopify's hosted checkout page
+- Checkout redirects to Shopify's hosted checkout page (same tab)
 - Storefront access token and domain are hardcoded in the file
+- API version (`2025-07`) is hardcoded — update periodically
 
 **Supabase** (`/src/integrations/supabase/`)
 - Client initialized from env vars: `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`
-- Edge function `send-quote-request` (`/supabase/functions/`) handles custom box form submissions
+- Edge function `send-quote-request` (`/supabase/functions/`) handles custom box form submissions (Deno runtime)
 - Uses Resend API (`RESEND_API_KEY` env var on Supabase) to email quotes to info@surpriso.ch
+
+### State Management (Zustand)
+Two stores, both persisted to localStorage:
+- `cartStore.ts` — cart items, checkout flow (key: `surprisebox-cart`)
+- `cookieConsentStore.ts` — cookie consent preferences (key: `cookie-consent`)
 
 ### Data Flow
 1. Products fetched from Shopify GraphQL → displayed in ProductsSection
-2. Cart managed by Zustand store (`/src/stores/cartStore.ts`) → persisted to localStorage
+2. Cart managed by Zustand store → persisted to localStorage
 3. Checkout creates Shopify cart → redirects to Shopify checkout URL
 4. Custom box requests → Supabase edge function → Resend API → email
 
-### Routing
+### Routing & Navigation
 Single route app — `App.tsx` uses React Router with `/` (Index) and `*` (NotFound). New routes must be added above the catch-all `*` route.
+
+Navigation uses `scrollToSection(id)` with `document.getElementById`. Section IDs on the landing page: `produkte`, `vorteile`, `warum-wir`, `individuelle-box`, `faq`, `kontakt`.
 
 ### Design System
 - Colors use HSL CSS variables in `/src/index.css`, referenced via `hsl(var(--name))` in Tailwind

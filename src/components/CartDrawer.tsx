@@ -45,7 +45,7 @@ export const CartDrawer = () => {
       await createCheckout();
       const checkoutUrl = useCartStore.getState().checkoutUrl;
       if (checkoutUrl) {
-        window.open(checkoutUrl, '_blank');
+        window.location.href = checkoutUrl;
       }
     } catch (error) {
       console.error('Checkout failed:', error);
