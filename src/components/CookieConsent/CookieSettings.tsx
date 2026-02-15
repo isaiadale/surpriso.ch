@@ -4,7 +4,7 @@ import { Switch } from '@/components/ui/switch';
 import { useCookieConsentStore } from '@/stores/cookieConsentStore';
 
 export const CookieSettings = () => {
-  const { analytics, advertising, acceptAll, rejectAll, savePreferences } = useCookieConsentStore();
+  const { analytics, advertising, savePreferences } = useCookieConsentStore();
 
   const [analyticsEnabled, setAnalyticsEnabled] = useState(analytics);
   const [advertisingEnabled, setAdvertisingEnabled] = useState(advertising);
@@ -67,19 +67,12 @@ export const CookieSettings = () => {
           Das Deaktivieren bestimmter Cookies kann die Funktionalität der Website einschränken.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-2 mt-5">
+        <div className="mt-5">
           <Button
-            variant="outline"
             onClick={() => savePreferences(analyticsEnabled, advertisingEnabled)}
-            className="flex-1"
+            className="w-full"
           >
             Speichern
-          </Button>
-          <Button variant="outline" onClick={rejectAll} className="flex-1">
-            Ablehnen
-          </Button>
-          <Button onClick={acceptAll} className="flex-1">
-            Akzeptieren
           </Button>
         </div>
       </div>
