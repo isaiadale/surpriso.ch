@@ -1,23 +1,10 @@
 User-agent: *
 Allow: /
 
-# Blockiere sensible oder unwichtige Bereiche
-Disallow: /js/
-Disallow: /css/
-Disallow: /inc/
-Disallow: /vendor/
-Disallow: /admin/
+# Blockiere sensible Bereiche
 Disallow: /checkout/
 Disallow: /cart/
-Disallow: /login/
-Disallow: /my-account/
-Disallow: /search/
 Disallow: /api/
-
-# Verhindere das Indexieren von URL-Parametern (vermeidet Duplicate Content)
-Disallow: /*?*
-Disallow: /*?orderby=
-Disallow: /*?filter_
 
 # Link zur Sitemap (Wichtig für Google)
 Sitemap: https://surpriso.ch/sitemap.xml

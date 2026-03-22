@@ -43,7 +43,7 @@ No test framework is configured.
 ### State Management (Zustand)
 Two stores, both persisted to localStorage:
 - `cartStore.ts` — cart items, checkout flow (key: `surprisebox-cart`)
-- `cookieConsentStore.ts` — cookie consent preferences (key: `cookie-consent`)
+- `cookieConsentStore.ts` — cookie consent preferences (key: `surpriso-cookie-consent`)
 
 ### Data Flow
 1. Products fetched from Shopify GraphQL → displayed in ProductsSection
@@ -52,9 +52,16 @@ Two stores, both persisted to localStorage:
 4. Custom box requests → Supabase edge function → Resend API → email
 
 ### Routing & Navigation
-Single route app — `App.tsx` uses React Router with `/` (Index) and `*` (NotFound). New routes must be added above the catch-all `*` route.
+`App.tsx` uses React Router with routes: `/` (Index), `/impressum`, `/datenschutz`, `*` (NotFound). New routes must be added above the catch-all `*` route.
 
-Navigation uses `scrollToSection(id)` with `document.getElementById`. Section IDs on the landing page: `produkte`, `vorteile`, `warum-wir`, `individuelle-box`, `faq`, `kontakt`.
+`CookieConsentManager` is rendered outside `<Routes>` (at the `App` level) so it appears on all pages.
+
+Navigation on the landing page uses `scrollToSection(id)` with `document.getElementById`. Section IDs: `produkte`, `vorteile`, `warum-wir`, `individuelle-box`, `faq`, `kontakt`.
+
+### Key Components
+- `CartDrawer` — slide-out cart panel (shadcn `Sheet`), rendered inside `Header`. Calls `createCheckout()` then redirects to `window.location.href` with Shopify URL.
+- `CookieConsent/CookieConsentManager` — auto-shows banner 1s after load if no valid consent; switches between `CookieBanner` and `CookieSettings` views.
+- Product image fallbacks in `/src/assets/` (PNG/JPG) are used when Shopify returns no image URL.
 
 ### Design System
 - Colors use HSL CSS variables in `/src/index.css`, referenced via `hsl(var(--name))` in Tailwind

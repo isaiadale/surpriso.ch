@@ -14,8 +14,8 @@ export const SEO = ({
   title = "Surpriso-Box | Premium Geschenkboxen aus der Schweiz",
   description = "Überraschen Sie mit einzigartigen Geschenkboxen. Surpriso-Boxen für Weihnachten, Teamgeschenke und individuelle Firmenboxen ab 25 Stück. 100% Schweizer Qualität.",
   keywords = "Geschenkbox Schweiz, Surprisebox, Weihnachtsgeschenk Firma, Firmengeschenk, Premium Geschenke Schweiz",
-  canonicalUrl = "https://surpriso-box.ch/",
-  ogImage = "https://surpriso-box.ch/og-image.jpg",
+  canonicalUrl = "https://surpriso.ch/",
+  ogImage = "https://surpriso.ch/og-image.jpg",
   ogType = "website",
   structuredData,
 }: SEOProps) => {

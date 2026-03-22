@@ -3,53 +3,29 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
+
   <!-- Homepage -->
   <url>
     <loc>https://surpriso.ch/</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Products Section -->
+
+  <!-- Impressum -->
   <url>
-    <loc>https://surpriso.ch/#produkte</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Custom Box Form -->
-  <url>
-    <loc>https://surpriso.ch/#vorteile</loc>
-    <lastmod>2026-01-02</lastmod>
+    <loc>https://surpriso.ch/impressum</loc>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
- <!-- Warum Surpriso -->
-  <url>
-    <loc>https://surpriso.ch/#warum-wir</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
 
-  <!-- FAQ Section -->
+  <!-- Datenschutz -->
   <url>
-    <loc>https://surpriso.ch/#faq</loc>
-    <lastmod>2026-01-02</lastmod>
+    <loc>https://surpriso.ch/datenschutz</loc>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.3</priority>
   </url>
-  
-  <!-- Contact Section -->
-  <url>
-    <loc>https://surpriso.ch/#kontakt</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
+
 </urlset>
