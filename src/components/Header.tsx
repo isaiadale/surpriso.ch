@@ -13,6 +13,8 @@ export const Header = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = `/#${id}`;
     }
     setIsMenuOpen(false);
   };
