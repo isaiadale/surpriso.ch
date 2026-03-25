@@ -54,7 +54,7 @@ Two stores, both persisted to localStorage:
 ### Routing & Navigation
 `App.tsx` uses React Router with routes: `/` (Index), `/impressum`, `/datenschutz`, `*` (NotFound). New routes must be added above the catch-all `*` route.
 
-`CookieConsentManager` is rendered outside `<Routes>` (at the `App` level) so it appears on all pages.
+`CookieConsentManager` is rendered outside `<BrowserRouter>` (after it in `App.tsx`) so it appears on all pages but has no React Router context — don't use router hooks inside it.
 
 Navigation on the landing page uses `scrollToSection(id)` with `document.getElementById`. Section IDs: `produkte`, `vorteile`, `warum-wir`, `individuelle-box`, `faq`, `kontakt`.
 

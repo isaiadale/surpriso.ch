@@ -8,7 +8,7 @@ const Impressum = () => {
       <SEO
         title="Impressum | Surpriso"
         description="Impressum der Surpriso-Box Webseite. Angaben gemäss Schweizer Recht."
-        canonicalUrl="https://surpriso-box.ch/impressum"
+        canonicalUrl="https://surpriso.ch/impressum"
       />
       <Header />
       <main className="flex-1 pt-28 pb-16">
@@ -20,7 +20,7 @@ const Impressum = () => {
           <div className="space-y-6 text-muted-foreground">
             <section>
               <h2 className="font-display font-semibold text-foreground mb-1">
-                Angaben gemäss Schweizer Recht
+                Für den Inhalt verantwortlich
               </h2>
               <p>
                 Isaia D'Alessandro
@@ -28,14 +28,9 @@ const Impressum = () => {
                 9014 St.Gallen
                 <br />
                 Schweiz
+                <br />
+                info@surpriso.ch
               </p>
-            </section>
-
-            <section>
-              <h2 className="font-display font-semibold text-foreground mb-1">
-                Kontakt
-              </h2>
-              <p>E-Mail: isaia@surpriso.ch</p>
             </section>
 
             <section>

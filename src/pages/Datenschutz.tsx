@@ -8,7 +8,7 @@ const Datenschutz = () => {
       <SEO
         title="Datenschutz | Surpriso"
         description="Datenschutzerklärung der Surpriso-Box Webseite nach Art. 19 nDSG."
-        canonicalUrl="https://surpriso-box.ch/datenschutz"
+        canonicalUrl="https://surpriso.ch/datenschutz"
       />
       <Header />
       <main className="flex-1 pt-28 pb-16">
