@@ -1,53 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Check } from "lucide-react";
-import { ShopifyProduct, CartItem } from "@/lib/shopify";
+import { Product } from "@/lib/products";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { useState } from "react";
 
-// Import fallback images
-import sweetFunImage from "@/assets/sweet-fun-box.png";
-import goodieFunImage from "@/assets/goodie-fun-box.png";
-
 interface ProductCardProps {
-  product: ShopifyProduct;
+  product: Product;
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const addItem = useCartStore((state) => state.addItem);
   const [isAdded, setIsAdded] = useState(false);
 
-  const { node } = product;
-  const price = node.priceRange.minVariantPrice;
-  const variant = node.variants.edges[0]?.node;
-  const shopifyImage = node.images.edges[0]?.node?.url;
-  
-  // Use fallback images if no Shopify image
-  const getFallbackImage = () => {
-    const title = node.title.toLowerCase();
-    if (title.includes("goodie")) {
-      return goodieFunImage;
-    }
-    return sweetFunImage;
-  };
-
-  const image = shopifyImage || getFallbackImage();
-
   const handleAddToCart = () => {
-    if (!variant) return;
-
-    const cartItem: CartItem = {
-      product,
-      variantId: variant.id,
-      variantTitle: variant.title,
-      price: variant.price,
+    addItem({
+      productId: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.image,
       quantity: 1,
-      selectedOptions: variant.selectedOptions || [],
-    };
+    });
 
-    addItem(cartItem);
     setIsAdded(true);
-    toast.success(`${node.title} wurde zum Warenkorb hinzugefügt`, {
+    toast.success(`${product.title} wurde zum Warenkorb hinzugefügt`, {
       position: "top-center",
     });
 
@@ -58,28 +34,28 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     <div className="group bg-card rounded-xl overflow-hidden border border-border card-hover">
       <div className="aspect-square overflow-hidden bg-secondary">
         <img
-          src={image}
-          alt={node.title}
+          src={product.image}
+          alt={product.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
-      
+
       <div className="p-6">
         <h3 className="font-display text-xl font-semibold text-foreground mb-2 transition-colors group-hover:text-primary">
-          {node.title}
+          {product.title}
         </h3>
-        
+
         <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-          {node.description}
+          {product.description}
         </p>
-        
+
         <div className="flex items-center justify-between">
           <div className="font-display text-2xl font-bold text-primary">
-            {price.currencyCode} {parseFloat(price.amount).toFixed(0)}
+            {product.price.currencyCode} {parseFloat(product.price.amount).toFixed(0)}
           </div>
-          
-          <Button 
-            onClick={handleAddToCart} 
+
+          <Button
+            onClick={handleAddToCart}
             variant={isAdded ? "accent" : "default"}
             className="transition-all"
           >

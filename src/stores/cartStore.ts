@@ -1,18 +1,19 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { CartItem, createStorefrontCheckout } from '@/lib/shopify';
+import { createStripeCheckoutSession } from '@/lib/stripe';
+import type { CartItem } from '@/lib/products';
+
+export type { CartItem };
 
 interface CartStore {
   items: CartItem[];
-  cartId: string | null;
   checkoutUrl: string | null;
   isLoading: boolean;
-  
+
   addItem: (item: CartItem) => void;
-  updateQuantity: (variantId: string, quantity: number) => void;
-  removeItem: (variantId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
+  removeItem: (productId: string) => void;
   clearCart: () => void;
-  setCartId: (cartId: string) => void;
   setCheckoutUrl: (url: string) => void;
   setLoading: (loading: boolean) => void;
   createCheckout: () => Promise<void>;
@@ -22,51 +23,46 @@ export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
       items: [],
-      cartId: null,
       checkoutUrl: null,
       isLoading: false,
 
       addItem: (item) => {
         const { items } = get();
-        const existingItem = items.find(i => i.variantId === item.variantId);
-        
-        if (existingItem) {
+        const existing = items.find(i => i.productId === item.productId);
+
+        if (existing) {
           set({
             items: items.map(i =>
-              i.variantId === item.variantId
+              i.productId === item.productId
                 ? { ...i, quantity: i.quantity + item.quantity }
                 : i
-            )
+            ),
           });
         } else {
           set({ items: [...items, item] });
         }
       },
 
-      updateQuantity: (variantId, quantity) => {
+      updateQuantity: (productId, quantity) => {
         if (quantity <= 0) {
-          get().removeItem(variantId);
+          get().removeItem(productId);
           return;
         }
-        
         set({
           items: get().items.map(item =>
-            item.variantId === variantId ? { ...item, quantity } : item
-          )
+            item.productId === productId ? { ...item, quantity } : item
+          ),
         });
       },
 
-      removeItem: (variantId) => {
-        set({
-          items: get().items.filter(item => item.variantId !== variantId)
-        });
+      removeItem: (productId) => {
+        set({ items: get().items.filter(item => item.productId !== productId) });
       },
 
       clearCart: () => {
-        set({ items: [], cartId: null, checkoutUrl: null });
+        set({ items: [], checkoutUrl: null });
       },
 
-      setCartId: (cartId) => set({ cartId }),
       setCheckoutUrl: (checkoutUrl) => set({ checkoutUrl }),
       setLoading: (isLoading) => set({ isLoading }),
 
@@ -76,15 +72,15 @@ export const useCartStore = create<CartStore>()(
 
         setLoading(true);
         try {
-          const checkoutUrl = await createStorefrontCheckout(items);
-          setCheckoutUrl(checkoutUrl);
+          const url = await createStripeCheckoutSession(items);
+          setCheckoutUrl(url);
         } catch (error) {
           console.error('Failed to create checkout:', error);
           throw error;
         } finally {
           setLoading(false);
         }
-      }
+      },
     }),
     {
       name: 'surprisebox-cart',
