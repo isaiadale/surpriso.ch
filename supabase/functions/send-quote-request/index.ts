@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 // Rate limiting: track requests per IP
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -131,6 +132,42 @@ const handler = async (req: Request): Promise<Response> => {
 
     const data: QuoteRequest = validationResult.data;
 
+    // Persist the request to the database (source of truth). Uses the
+    // service_role key, which bypasses RLS. Failure is logged but non-fatal
+    // so a working email can still capture the lead.
+    let insertedId: string | null = null;
+    try {
+      const supabase = createClient(
+        Deno.env.get("SUPABASE_URL")!,
+        Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+      );
+      const { data: inserted, error: insertError } = await supabase
+        .from("quote_requests")
+        .insert({
+          company: data.company,
+          name: data.name,
+          email: data.email,
+          phone: data.phone || null,
+          quantity: data.quantity,
+          budget: data.budget,
+          wishes: data.wishes || null,
+          timing: data.timing,
+          has_addresses: data.hasAddresses === "yes",
+          client_ip: clientIp,
+        })
+        .select("id")
+        .single();
+
+      if (insertError) {
+        console.error("Failed to store quote request:", insertError);
+      } else {
+        insertedId = inserted?.id ?? null;
+        console.log("Stored quote request:", insertedId);
+      }
+    } catch (dbError) {
+      console.error("Database insert threw:", dbError);
+    }
+
     // Escape all user inputs for HTML
     const safeData = {
       company: escapeHtml(data.company),
@@ -171,36 +208,64 @@ const handler = async (req: Request): Promise<Response> => {
       <p><small>Client IP: ${clientIp}</small></p>
     `;
 
+    // Send the notification email (additional channel). Non-fatal: if the DB
+    // insert already succeeded, we still report success to the client.
+    let emailSent = false;
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (!resendApiKey) {
-      console.error("RESEND_API_KEY not configured");
+      console.error("RESEND_API_KEY not configured — skipping email");
+    } else {
+      try {
+        const response = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Surpriso-Box <info@surpriso.ch>",
+            to: ["info@surpriso.ch"],
+            subject: `Neue Offerteanfrage von ${safeData.company} - ${safeData.quantity} Pakete`,
+            html: emailHtml,
+            reply_to: data.email, // Use original email for reply-to
+          }),
+        });
+
+        const emailResponse = await response.json();
+        console.log("Email response:", emailResponse);
+
+        if (!response.ok) {
+          console.error("Resend API error:", emailResponse);
+        } else {
+          emailSent = true;
+        }
+      } catch (emailError) {
+        console.error("Email send threw:", emailError);
+      }
+    }
+
+    // Mark the stored request as notified once the email went out.
+    if (emailSent && insertedId) {
+      try {
+        const supabase = createClient(
+          Deno.env.get("SUPABASE_URL")!,
+          Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+        );
+        await supabase
+          .from("quote_requests")
+          .update({ email_sent: true })
+          .eq("id", insertedId);
+      } catch (updateError) {
+        console.error("Failed to update email_sent flag:", updateError);
+      }
+    }
+
+    // Only fail if the lead was neither stored nor emailed.
+    if (!insertedId && !emailSent) {
       return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
+        JSON.stringify({ error: "Could not process your request. Please try again later." }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
-    }
-    
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${resendApiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "Surpriso-Box <info@surpriso.ch>",
-        to: ["info@surpriso.ch"],
-        subject: `Neue Offerteanfrage von ${safeData.company} - ${safeData.quantity} Pakete`,
-        html: emailHtml,
-        reply_to: data.email, // Use original email for reply-to
-      }),
-    });
-
-    const emailResponse = await response.json();
-    console.log("Email response:", emailResponse);
-
-    if (!response.ok) {
-      console.error("Resend API error:", emailResponse);
-      throw new Error(emailResponse.message || "Failed to send email");
     }
 
     return new Response(JSON.stringify({ success: true }), {
